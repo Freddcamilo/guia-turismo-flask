@@ -1,0 +1,6 @@
+# -- CONTENIDO DE .gitignore --
+venv/
+__pycache__/
+*.pyc
+guias.db  # Excluye la base de datos local
+.DS_Store

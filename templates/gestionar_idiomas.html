@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Idiomas</title>
+    <style>
+        .container { max-width: 600px; margin: 50px auto; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; }
+        h1 { color: #17a2b8; border-bottom: 2px solid #ccc; padding-bottom: 10px; }
+        /* ... (Estilos de formulario y flashes) ... */
+        ul.idiomas-list { list-style: disc; padding-left: 20px; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Gestionar Idiomas (Admin)</h1>
+        
+        <h2>Añadir Nuevo Idioma</h2>
+        <form method="POST" action="{{ url_for('gestionar_idiomas') }}">
+            <div class="form-group">
+                <label for="nombre_idioma">Nombre del Idioma:</label>
+                <input type="text" id="nombre_idioma" name="nombre_idioma" required>
+            </div>
+            <button type="submit" class="btn-submit" style="background-color:#17a2b8;">Añadir Idioma</button>
+        </form>
+
+        <h2 style="margin-top: 30px;">Idiomas Actualmente Disponibles:</h2>
+        {% if idiomas %}
+            <ul class="idiomas-list">
+                {% for idioma in idiomas %}
+                    <li>{{ idioma.nombre }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay idiomas registrados.</p>
+        {% endif %}
+
+        <p style="margin-top: 20px;"><a href="{{ url_for('panel_admin') }}">← Volver al Panel de Administrador</a></p>
+    </div>
+</body>
+</html>
